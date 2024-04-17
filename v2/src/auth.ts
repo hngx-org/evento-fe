@@ -16,6 +16,12 @@ export const {
   events: {
     async signIn({ user, account, profile }) {
       console.log('signIn', user.email);
+       const request = await axios.post('https://evento-qo6d.onrender.com/api/v1/login/google', {
+         email: profile?.email,
+         picture: profile?.picture,
+         name: profile?.name,
+       });
+       
     },
   },
   ...authConfig,

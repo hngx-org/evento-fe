@@ -30,7 +30,7 @@ const NavBar = () => {
       <header className="md:flex  justify-between items-center py-3 md:px-16 px-5">
         <div className="flex items-center justify-between">
           <div
-            className={`${chelsea.className} flex gap-14 text-primary-100 dark:text-dark-two text-[30px] font-medium`}
+            className={`${chelsea.className} flex gap-14 text-primary-100  text-[30px] font-medium`}
           >
             <Link href="/">EVENTO</Link>
           </div>

@@ -11,7 +11,9 @@ const EventsGrid = () => {
   const [limit, setLimit] = useState<number>(6);
   const { events, eventsSearchTerm } = useExploreCtx();
 
-  // Filter events based on the search term
+  console.log(events)
+
+
   const filteredEvents = events.filter(
     (event) => eventsSearchTerm === '' || event.title!.toLowerCase().includes(eventsSearchTerm.toLowerCase()),
   );
