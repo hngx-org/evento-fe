@@ -13,7 +13,9 @@ export default {
       clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET as string,
       authorization: {
         params: {
-          prompt: 'consent',
+          prompt: 'consent',[
+            
+          ]
           access_type: 'offline',
           response_type: 'code',
         },
