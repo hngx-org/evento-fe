@@ -20,7 +20,7 @@
     "iconsax-react": "^0.0.8",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.335.0",
-    "next": "^14.2.1",
+    "next": "^14.2.2",
     "next-auth": "^5.0.0-beta.13",
     "prettier": "^3.2.5",
     "react": "^18",

@@ -9,10 +9,7 @@ import { cn } from '@/utils';
 
 const EventsGrid = () => {
   const [limit, setLimit] = useState<number>(6);
-  const { events, eventsSearchTerm } = useExploreCtx();
-
-  console.log(events)
-
+  const { events, eventsSearchTerm, selectedcategories } = useExploreCtx();
 
   const filteredEvents = events.filter(
     (event) => eventsSearchTerm === '' || event.title!.toLowerCase().includes(eventsSearchTerm.toLowerCase()),
