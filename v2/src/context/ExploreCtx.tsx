@@ -30,13 +30,15 @@ const ExploreContextProvider = ({ children }: { children: React.ReactNode }) => 
   const [eventsLoading, seteventsLoading] = useState(false);
   const [selectedcategories, setSelectedcategories] = useState('all');
 
+  console.log(selectedcategories)
+
   useLayoutEffect(() => {
     const fetchUserData = async () => {
       try {
         setcatLoading(true);
         const cat = await allcategories();
         if (cat?.status === 'success') {
-          console.log(cat.categories);
+          // console.log(cat.categories);
           setcategories(cat.categories);
         } else {
         }
@@ -95,7 +97,7 @@ const ExploreContextProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     fetchEvents();
-  }, [selectedcategories]);
+  }, [selectedcategories, events]);
 
   const value = useMemo(
     () => ({

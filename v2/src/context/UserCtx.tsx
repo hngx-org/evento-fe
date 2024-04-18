@@ -55,8 +55,6 @@ const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
     fetchUserData();
   }, [user]);
 
-  console.log(user);
-
   const value = useMemo(() => ({ user, setUser }), [user]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

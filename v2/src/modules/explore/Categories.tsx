@@ -63,7 +63,7 @@ const Categories = () => {
               //   className={`${nunito.className} ${
               //     // selectedCategory === item.categoryID ? 'bg-primary-100 text-white-100' : ''
               //   }`}
-              onClick={() => setSelectedcategories(category.categoryID == 'all' ? '' : category.categoryID)}
+              onClick={() => setSelectedcategories(category.categoryID)}
             >
               {category.name}
             </Button>
