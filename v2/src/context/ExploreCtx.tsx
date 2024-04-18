@@ -60,17 +60,17 @@ const ExploreContextProvider = ({ children }: { children: React.ReactNode }) => 
           const allEventsResult = await allevent();
           if (allEventsResult?.status === 'success') {
             setevents(allEventsResult.events);
+            seteventsLoading(false);
           }
         } else {
           const eventsByCategoryResult = await geteventsbycategories(selectedcategories);
           if (eventsByCategoryResult?.status === 'success') {
             setevents(eventsByCategoryResult.events || []);
+            seteventsLoading(false);
           }
         }
       } catch (err) {
         console.log(err);
-      } finally {
-        seteventsLoading(false);
       }
     };
 
