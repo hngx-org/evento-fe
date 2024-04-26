@@ -37,7 +37,7 @@ export default function HomeFooter() {
         <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-12">
           <div>
             <Link className="" href={''}>
-              <h3 className={`${chelsea.className} text-xl  font-bold text-primary-100 dark:text-dark-two`}>Evento</h3>
+              <h3 className={`${chelsea.className} text-xl  font-bold text-primary-100`}>Evento</h3>
             </Link>
           </div>
           <div className="flex gap-6">
@@ -390,7 +390,7 @@ export default function HomeFooter() {
             );
           })}
         </div>
-        <p className="text-sm font-semibold text-primary-100 dark:text-dark-two">
+        <p className="text-sm font-semibold text-primary-100 ">
           {' '}
           &copy; {currentYear} Evento. All rights reserved.
         </p>

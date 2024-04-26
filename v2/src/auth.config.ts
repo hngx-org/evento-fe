@@ -2,7 +2,6 @@ import type { NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { LoginSchema } from './schemas';
 import { signinUser } from './data';
-import Google from 'next-auth/providers/google';
 import GoogleProvider from 'next-auth/providers/google';
 import axios from 'axios';
 
@@ -37,19 +36,20 @@ export default {
   ],
   callbacks: {
     async signIn({ user, account, profile }: { user: any; account: any; profile?: any }) {
-      const request = await axios.post('https://evento-qo6d.onrender.com/api/v1/login/google', {
-        email: profile.email,
-        picture: profile.picture,
-        name: profile.name,
-      });
-      const response = await request.data;
-      if (request.data) {
-        const token: string = response.data.token;
-        const userId: string = response.data.user.userID;
-
-        return `/loading?token=${token}&id=${userId}`;
+      if (account.provider === 'google') {
+        const request = await axios.post('https://evento-qo6d.onrender.com/api/v1/login/google', {
+          email: profile.email,
+          picture: profile.picture,
+          name: profile.name,
+        });
+        const response = await request.data;
+        if (request.data) {
+          const token: string = response.data.token;
+          const userId: string = response.data.user.userID;
+          return `/loading?token=${token}&id=${userId}`;
+        }
       }
-      return false;
+      return true;
     },
     async jwt({ token, user, account }: { token: any; user: any; account: any }) {
       if (account) {

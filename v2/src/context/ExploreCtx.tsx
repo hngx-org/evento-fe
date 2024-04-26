@@ -30,13 +30,14 @@ const ExploreContextProvider = ({ children }: { children: React.ReactNode }) => 
   const [eventsLoading, seteventsLoading] = useState(false);
   const [selectedcategories, setSelectedcategories] = useState('all');
 
+  console.log(selectedcategories);
+
   useLayoutEffect(() => {
     const fetchUserData = async () => {
       try {
         setcatLoading(true);
         const cat = await allcategories();
         if (cat?.status === 'success') {
-          console.log(cat.categories);
           setcategories(cat.categories);
         } else {
         }
@@ -50,52 +51,31 @@ const ExploreContextProvider = ({ children }: { children: React.ReactNode }) => 
     fetchUserData();
   }, [categories]);
 
-  // useLayoutEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       seteventsLoading(true);
-  //       const events = await allevent();
-  //       if (events?.status === 'success') {
-  //         console.log(events.events);
-  //         setevents(events.events);
-  //       } else {
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
-  //     } finally {
-  //       seteventsLoading(false);
-  //     }
-  //   };
-
-  //   fetchEvents();
-  // }, [events]);
   useLayoutEffect(() => {
     const fetchEvents = async () => {
       try {
         seteventsLoading(true);
 
         if (selectedcategories === 'all') {
-          // Fetch all events only when it is all
           const allEventsResult = await allevent();
           if (allEventsResult?.status === 'success') {
             setevents(allEventsResult.events);
+            seteventsLoading(false);
           }
         } else {
-          // Fetch events by selected category
           const eventsByCategoryResult = await geteventsbycategories(selectedcategories);
           if (eventsByCategoryResult?.status === 'success') {
-            setevents(eventsByCategoryResult.events);
+            setevents(eventsByCategoryResult.events || []);
+            seteventsLoading(false);
           }
         }
       } catch (err) {
         console.log(err);
-      } finally {
-        seteventsLoading(false);
       }
     };
 
     fetchEvents();
-  }, [selectedcategories]);
+  }, [selectedcategories, events]);
 
   const value = useMemo(
     () => ({
